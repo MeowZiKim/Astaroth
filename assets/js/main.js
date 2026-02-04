@@ -192,24 +192,6 @@
 		// when the "medium" breakpoint activates, and moves it back when it deactivates.
 			$footer.find('.copyright').each(function() {
 
-				<script>
-                 window.addEventListener('scroll', function() {
-                  // 取得目前的滾動位置
-                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                   // 取得整個網頁可滾動的總高度
-                  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        
-                   // 計算百分比
-                  const scrollPercent = (scrollTop / scrollHeight) * 100;
-        
-                   // 更新 Footer 進度條的寬度
-                  const progressBar = document.getElementById('footer-progress');
-                       if (progressBar) {
-                          progressBar.style.width = scrollPercent + '%';
-                       }
-                });
-               </script>
-
 				var $this = $(this),
 					$parent = $this.parent(),
 					$lastParent = $parent.parent().children().last();
@@ -298,3 +280,4 @@
 
 
 })(jQuery);
+
