@@ -92,7 +92,7 @@
 					</div>
 
 				<!-- Footer -->
-				<div id="footer-progress-bar" style="position: fixed; bottom: 0; left: 0; height: 10px; width: 0%; background: #4facfe; z-index: 9999; pointer-events: none;"></div>
+				<div id="footer-progress-bar" style="position: fixed !important; bottom: 0 !important; left: 0 !important; height: 20px !important; width: 0%; background: red !important; z-index: 999999 !important; display: block !important;"></div>
 					<footer id="footer" class="panel">						
 						<div class="inner split">
 							<div>
@@ -152,14 +152,26 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-		<script>
-    window.onscroll = function() {
-        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+<script>
+    // 監控捲動百分比
+    function updateProgress() {
+        var winScroll = window.pageYOffset || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
-        document.getElementById("footer-progress-bar").style.width = scrolled + "%";
-    };
+        
+        var bar = document.getElementById("footer-progress-bar");
+        if (bar) {
+            bar.style.width = scrolled + "%";
+            // 測試用：如果這行有在跑，Console 會印出數字
+            console.log("滾動進度: " + scrolled + "%");
+        }
+    }
+
+    // 強制掛載監聽器
+    window.addEventListener('scroll', updateProgress, true);
+    window.addEventListener('resize', updateProgress, true);
 </script>
 	</body>
 
 </html>
+
