@@ -6,6 +6,27 @@
 -->
 <html>
 	<head>
+		#footer {
+    position: relative; /* 確保進度條以此為基準 */
+    overflow: hidden; 
+}
+
+#footer-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0; /* 撐滿整個高度 */
+    width: 0%; /* 初始寬度 */
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); /* 漂亮的藍色漸層 */
+    opacity: 0.3; /* 半透明感，不會吃掉文字 */
+    z-index: 0;   /* 放在內容後面 */
+    transition: width 0.1s ease-out;
+}
+
+#footer .inner {
+    position: relative;
+    z-index: 1; /* 確保文字在進度條上方，可以正常點擊 */
+}
 		<title>ASTAROTH</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -92,7 +113,8 @@
 					</div>
 
 				<!-- Footer -->
-					<footer id="footer" class="panel">						
+					<footer id="footer" class="panel">
+						<div id="footer-progress-bar"></div>
 						<div class="inner split">
 							<div>
 								<section>
@@ -150,10 +172,27 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+    <script>
+    (function() {
+        // 監控捲動事件
+        window.addEventListener('scroll', function() {
+            const progressBar = document.getElementById('footer-progress-bar');
+            if (!progressBar) return;
 
+            // 計算捲動百分比
+            const winScroll = window.pageYOffset || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+
+            // 將百分比套用到寬度
+            progressBar.style.width = scrolled + '%';
+        });
+    })();
+</script>
 	</body>
 
 </html>
+
 
 
 
