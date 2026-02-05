@@ -13,6 +13,24 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	    <style>
+
+			/* 調整圖片上的主標題 (<h2>) */
+#main .thumb h2 {
+    font-size: 1.5rem !important;      /* 字體大小：可以改成 1.2rem, 2rem 等 */
+    font-weight: 700 !important;      /* 字體粗細：100-900，700 是粗體 */
+    letter-spacing: 0.1em !important; /* 字距：增加一點點間距會更有攝影集質感 */
+    margin-bottom: 0.5rem !important; /* 與下方描述文字的距離 */
+    font-family: "Microsoft JhengHei", sans-serif !important; /* 指定字體 */
+}
+
+/* 調整圖片下的描述文字 (<p>) */
+#main .thumb p {
+    font-size: 1rem !important;        /* 描述文字通常比標題小一點 */
+    font-weight: 300 !important;      /* 字體粗細：300 比較細，看起來較優雅 */
+    color: rgba(255, 255, 255, 0.8) !important; /* 文字顏色：稍微帶一點透明的白，不會太刺眼 */
+    letter-spacing: 0.05em !important;
+}
+			
 /* 這是定義呼吸動作的細節 */
 @keyframes breathe {
     0% {
@@ -190,6 +208,7 @@
 	</body>
 
 </html>
+
 
 
 
